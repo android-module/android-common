@@ -51,7 +51,7 @@ class DecorViewProxy {
 
         constructor(fragment: Fragment, inflater: LayoutInflater, container: ViewGroup?) {
             this.fragment = fragment
-            context = fragment.context!!
+            context = fragment.requireContext()
             this.container = container
             isActivity = false
             this.inflater = inflater
@@ -104,6 +104,10 @@ class DecorViewProxy {
     }
 
 
+    private lateinit var rootXml:View
+
+    fun getRoomXml() = rootXml
+
     //返回 contentView
     fun proxySetContentView(): View {
 
@@ -120,6 +124,8 @@ class DecorViewProxy {
                 childRootView = inflater!!.inflate(contentViewId, container, false)
             }
         }
+
+        rootXml = childRootView
 
         var targetTitleView: View? = null
         var isSellConfigTitleView = false

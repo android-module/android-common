@@ -31,8 +31,17 @@ abstract class BaseFragment<T> : LifeCycleLogFragment(), BaseContract.BaseView, 
     private lateinit var mContentView: View
     protected lateinit var decorViewProxy: DecorViewProxy
 
+    protected val mRootView by lazy { mContentView }
+
+
+    public fun  rootXml():View {
+        return decorViewProxy.getRoomXml()
+    }
+
+
+
     override val mContext: Context
-        get() = context!!
+        get() = requireContext()
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
