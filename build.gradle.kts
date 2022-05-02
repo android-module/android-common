@@ -47,16 +47,16 @@ android {
 
 
 dependencies {
-    implementation(Deps.kotlin_stdlib)
-    implementation(Deps.appcompat)
-    implementation(Deps.ktx)
-    implementation(Deps.constraintlayout)
-    implementation(Deps.recyclerview)
-    implementation(Deps.immersionbar)
-    implementation(Deps.eventbus)
-    implementation(Deps.lifecycle)
-    implementation(Deps.viewbinding)
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+     implementation(libs.kotlin.stdlib.jdk8)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.kotlin.ktx)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.immersionbar)
+    implementation(libs.eventbus)
+    implementation(libs.androidx.lifecycle)
+    implementation(libs.androidx.lifecycle.extensions)
+    implementation(libs.viewbinding)
 }
 
 //apply(from = "https://gitee.com/caldrem/gradle-maven-kotlin-dsl/raw/master/bintray-with-maven-publish.gradle")
