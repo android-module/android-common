@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="cm_ok">OK</string>
+    <string name="cm__net_error">network error</string>
+    <string name="cm_retry">retry again</string>
+    <string name="back">back</string>
+</resources>
