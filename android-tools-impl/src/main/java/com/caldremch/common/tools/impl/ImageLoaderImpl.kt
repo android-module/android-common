@@ -1,7 +1,8 @@
-package com.caldremch.common.tools
+package com.caldremch.common.tools.impl
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.caldremch.common.tools.IImageLoader
 import java.io.File
 
 /**

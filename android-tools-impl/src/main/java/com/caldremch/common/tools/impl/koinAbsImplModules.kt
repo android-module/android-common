@@ -1,5 +1,8 @@
-package com.caldremch.common.tools
+package com.caldremch.common.tools.impl
 
+import com.caldremch.common.tools.IImageLoader
+import com.caldremch.common.tools.IStorage
+import com.caldremch.common.tools.IToast
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 

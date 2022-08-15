@@ -1,7 +1,8 @@
-package com.caldremch.common.tools
+package com.caldremch.common.tools.impl
 
 import com.blankj.utilcode.util.GsonUtils
 import com.blankj.utilcode.util.SPUtils
+import com.caldremch.common.tools.IStorage
 import java.lang.reflect.Type
 
 /**

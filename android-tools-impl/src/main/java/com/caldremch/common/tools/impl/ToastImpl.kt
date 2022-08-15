@@ -1,6 +1,7 @@
-package com.caldremch.common.tools
+package com.caldremch.common.tools.impl
 
 import com.blankj.utilcode.util.ToastUtils
+import com.caldremch.common.tools.IToast
 
 /**
  * Created by Leon on 2022/7/12
