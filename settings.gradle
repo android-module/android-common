@@ -17,3 +17,5 @@ rootProject.name = "Common"
 include ':app'
 include ':android-common'
 include ':android-common-ext'
+include ':android-tools-core'
+include ':android-tools-impl'
