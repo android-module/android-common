@@ -124,7 +124,7 @@ class DecorViewProxy {
     private fun getUserView(): View {
         val childRootView: View
         if (isActivity) {
-            childRootView = LayoutInflater.from(context).inflate(contentViewLayoutId, null)
+            childRootView = if(layoutView != null) layoutView!! else LayoutInflater.from(context).inflate(contentViewLayoutId, null)
         } else {
             //优先使用View
             if (layoutView != null) {

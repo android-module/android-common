@@ -3,16 +3,9 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
-ext {
-    mySiteUrl="https://github.com/android-module/android-common"
-    myGitUrl="https://github.com/android-module/android-common.git"
-    myLibraryVersion="1.0.0"
-    myLibraryName="android-common"
-    myArtifactId="android-common"
-    myLibraryDescription="android-common framework"
-}
 
 android {
+    namespace 'com.caldremch.android.http.viewmodel'
     compileSdk 32
 
     defaultConfig {
@@ -39,21 +32,27 @@ android {
 }
 
 dependencies {
-    api "androidx.activity:activity-ktx:1.5.1"
-    api "androidx.fragment:fragment-ktx:1.5.1"
-    api 'org.greenrobot:eventbus:3.2.0'
-    implementation 'com.github.getActivity:TitleBar:9.5'
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation('io.insert-koin:koin-android:3.2.0')
+    implementation "androidx.activity:activity-ktx:1.5.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
+    implementation "androidx.fragment:fragment-ktx:1.5.1"
     implementation 'io.github.caldremch:android-logger:1.0.0'
-    implementation 'com.geyifeng.immersionbar:immersionbar:3.2.2'
-    implementation 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.2'
+    implementation 'io.github.caldremch:android-common:1.0.0'
+    implementation "io.github.caldremch:android-http:1.0.1-rc3"
+    implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'com.google.android.material:material:1.6.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-
 }
 
+ext {
+    mySiteUrl="https://github.com/android-module/android-common"
+    myGitUrl="https://github.com/android-module/android-common.git"
+    myLibraryVersion="1.0.0-rc3"
+    myLibraryName="android-http-viewmodel"
+    myArtifactId="android-http-viewmodel"
+    myLibraryDescription="android-http-viewmodel"
+}
 
 apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"

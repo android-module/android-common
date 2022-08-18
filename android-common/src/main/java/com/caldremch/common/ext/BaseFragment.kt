@@ -60,19 +60,10 @@ abstract class BaseFragment : BaseCommonFragment() {
         })
     }
 
-    open fun isUserNavigation():Boolean = true
+    open fun isUserNavigation():Boolean = false
 
     override fun onLeftClick(titleView: View?) {
-        if(isUserNavigation()){
-//           val con =  findNavController()
-//            if(con.backQueue.size == 2){
-//                requireActivity().finish()
-//            }else{
-//                con.popBackStack()
-//            }
-        }else{
-            requireActivity().finish()
-        }
+        requireActivity().finish()
     }
 
 }

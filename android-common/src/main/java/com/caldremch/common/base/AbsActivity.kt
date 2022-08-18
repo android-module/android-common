@@ -28,6 +28,9 @@ open class AbsActivity : LifeCycleLogActivity(), BaseInit, IStatusView {
     open val navigationBarColorRes: Int = android.R.color.white
     open val statusBarColorRes: Int? = null
     open val keyboadFixed: Boolean = false
+    open val isUserDataBinding: Boolean = false
+
+    open fun handleDataBinding(li:Int):View? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +41,14 @@ open class AbsActivity : LifeCycleLogActivity(), BaseInit, IStatusView {
         if (layoutId != 0) {
             val decorViewProxyBuilder = DecorViewProxy.Builder(this)
             decorViewProxyBuilder.isUseLoading(isUseLoading)
-            decorViewProxyBuilder.setContentViewLayoutId(layoutId)
+
+            if(isUserDataBinding){
+                handleDataBinding(layoutId)?.let { decorViewProxyBuilder.setContentView(it) }
+
+            }else{
+                decorViewProxyBuilder.setContentViewLayoutId(layoutId)
+            }
+
             if (isUseDefaultTitleBar) {
                 decorViewProxyBuilder.setTitleViewLayoutId(titleViewId)
                 decorViewProxyBuilder.setTitleView(titleView)
