@@ -2,16 +2,14 @@ package com.caldremch.common.widget
 
 import android.app.Activity
 import android.content.Context
-import android.util.Log
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.caldremch.android.log.debugLog
-import com.caldremch.common.widget.status.StatusView
 import com.caldremch.common.R
+import com.caldremch.common.widget.status.StatusView
 
 /**
  *
@@ -24,7 +22,7 @@ import com.caldremch.common.R
  * @describe 承载 View
  *
  **/
-class DecorViewProxy {
+internal class DecorViewProxy {
 
     private lateinit var context: Context
     private var isActivity: Boolean = true
@@ -32,16 +30,17 @@ class DecorViewProxy {
     private var contentViewLayoutId: Int = 0
     private var titleViewLayoutId: Int = 0
     private var container: ViewGroup? = null //fragment 使用
-    var statusView: StatusView? = null
     private var inflater: LayoutInflater? = null
+    private var fragment: Fragment? = null
+
     var titleView: View? = null
     var layoutView: View? = null
     var enablePlaceHolderStatusView: Boolean = false
-    private  var fragment: Fragment?=  null
+    var statusView: StatusView? = null
 
     class Builder {
-        private  var activity: Activity? = null
-        private  var fragment: Fragment? = null
+        private var activity: Activity? = null
+        private var fragment: Fragment? = null
         private var context: Context
         private var isActivity: Boolean = true
         private var isUseLoading: Boolean = false
@@ -124,7 +123,8 @@ class DecorViewProxy {
     private fun getUserView(): View {
         val childRootView: View
         if (isActivity) {
-            childRootView = if(layoutView != null) layoutView!! else LayoutInflater.from(context).inflate(contentViewLayoutId, null)
+            childRootView = if (layoutView != null) layoutView!! else LayoutInflater.from(context)
+                .inflate(contentViewLayoutId, null)
         } else {
             //优先使用View
             if (layoutView != null) {
@@ -161,15 +161,22 @@ class DecorViewProxy {
             // 如果还是没有, 那么直接添加进入跟布局,没有 titleView
             if (titleViewLayoutId == 0) {
                 //如果有loading,
-                if (isUseLoading){
-                    statusView = DecorViewProxyUtils.createStatusView(context, isActivity, contentViewLayoutId, fragment, childRootView)
+                if (isUseLoading) {
+                    statusView = DecorViewProxyUtils.createStatusView(
+                        context,
+                        isActivity,
+                        contentViewLayoutId,
+                        fragment,
+                        childRootView
+                    )
                     return DecorViewProxyUtils.wrapLoading(context, statusView!!)
                 }
                 return childRootView
             } else {
                 //在 Activity 中设置了 titleId, 或者 设置了 T
                 val parentLayout = ConstraintLayout(context)
-                val autoAddTitleView: View = LayoutInflater.from(context).inflate(titleViewLayoutId, parentLayout, false)
+                val autoAddTitleView: View =
+                    LayoutInflater.from(context).inflate(titleViewLayoutId, parentLayout, false)
                 parentLayout.addView(autoAddTitleView)
 
                 val titleParams = autoAddTitleView.layoutParams as ConstraintLayout.LayoutParams
@@ -241,7 +248,8 @@ class DecorViewProxy {
                 if (enablePlaceHolderStatusView) {  //用来做沉浸式的, 假如已经使用titleBarView来做 ,那么就不需要了
                     addPlaceHolderStatusView(parentLayout)
                 }
-                val titleBelowId:Int? = if (enablePlaceHolderStatusView) R.id.cm_default_android_common_status_view_id else null
+                val titleBelowId: Int? =
+                    if (enablePlaceHolderStatusView) R.id.cm_default_android_common_status_view_id else null
 
                 //add title view
                 addTitleView(parentLayout, targetTitleView, null)
@@ -258,7 +266,7 @@ class DecorViewProxy {
 
     private fun addPlaceHolderStatusView(parentLayout: ConstraintLayout) {
         val systemStatusBarView = View(parentLayout.context)
-        systemStatusBarView.id =  R.id.cm_default_android_common_status_view_id
+        systemStatusBarView.id = R.id.cm_default_android_common_status_view_id
         val statusViewLayoutParams = ConstraintLayout.LayoutParams(
             ConstraintLayout.LayoutParams.MATCH_PARENT,
             ConstraintLayout.LayoutParams.MATCH_PARENT,
@@ -285,9 +293,9 @@ class DecorViewProxy {
         titleParams.width = ConstraintLayout.LayoutParams.MATCH_PARENT
         titleParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID
         titleParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID
-        if(titleBelowId == null){
+        if (titleBelowId == null) {
             titleParams.topToTop = ConstraintLayout.LayoutParams.PARENT_ID
-        }else{
+        } else {
             titleParams.topToBottom = titleBelowId
 
         }
@@ -312,12 +320,15 @@ class DecorViewProxy {
         //将 StatusView 添加到 title 的底下
         if (isUseLoading) {
             //这里要区分activity和fragment
-            statusView = if(isActivity) StatusView(context, contentViewLayoutId) else StatusView(fragment!!, childRootView)
+            statusView = if (isActivity) StatusView(context, contentViewLayoutId) else StatusView(
+                fragment!!,
+                childRootView
+            )
             //将 statusView 添加到 title 底下
             parentLayout.addView(statusView, contentLayoutParams)
             debugLog { "addContentView: 添加loading" }
         } else {
-           debugLog { "addContentView: 没有loading" }
+            debugLog { "addContentView: 没有loading" }
             parentLayout.addView(childRootView, contentLayoutParams)
         }
     }

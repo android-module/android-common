@@ -7,14 +7,14 @@ import android.view.View
 import com.caldremch.android.log.debugLog
 import com.hjq.bar.OnTitleBarListener
 import com.hjq.bar.TitleBar
-import com.caldremch.common.base.BaseCommonFragment
+import com.caldremch.common.base.AbsFragment
 import com.caldremch.common.base.ILifeCycleLogger
 
 
 /**
  * @author Caldremch
  */
-abstract class BaseFragment : BaseCommonFragment() {
+abstract class BaseFragment : AbsFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

@@ -1,10 +1,11 @@
 package com.caldremch.common.ext
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Color
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import com.caldremch.android.log.debugLog
 import com.caldremch.common.R
 import com.caldremch.common.base.BaseCommonActivity
 import com.caldremch.common.base.ILifeCycleLogger
@@ -14,17 +15,17 @@ import com.hjq.bar.TitleBar
 /**
  * Created by Leon on 2022/7/6
  */
+@Deprecated(message = "do not use, customize by yourself", level = DeprecationLevel.ERROR)
 open class BaseActivity : BaseCommonActivity() {
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     open val leftIcon: Int? = null
 
     override fun getLogger(): ILifeCycleLogger {
-        return BaseFragment.BIZ_LOGGER
+        return object : ILifeCycleLogger {
+            override fun log(tag: String, msg: String) {
+                debugLog(tag) { msg }
+            }
+        }
     }
 
     override fun initTitleBar(titleView: View?) {
@@ -54,8 +55,8 @@ open class BaseActivity : BaseCommonActivity() {
         get() = Color.WHITE
 
     fun requireContext(): Context = this
-    fun requireActivity(): BaseActivity = this
-    open fun onDestroyView(){
+    fun requireActivity(): Activity = this
+    open fun onDestroyView() {
 
     }
 

@@ -1,4 +1,4 @@
-package com.caldremch.android.common.databinding.utils
+package com.caldremch.common.utils
 
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
@@ -8,8 +8,8 @@ import java.lang.reflect.Type
  */
 object TypeUtils {
 
-    fun <T> getClz(obj:Any, index:Int):Class<T>{
-        obj.javaClass.genericSuperclass?.let { type->
+    fun <T> getClz(obj: Any, index: Int): Class<T> {
+        obj.javaClass.genericSuperclass?.let { type ->
             type as ParameterizedType
             val types: Array<Type> = type.actualTypeArguments
             return types[index] as Class<T>

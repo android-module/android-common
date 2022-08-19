@@ -2,12 +2,11 @@ package com.caldremch.common.base
 
 import android.os.Bundle
 import android.view.View
-import com.caldremch.common.R
+import com.caldremch.common.utils.BarUtils
 import com.caldremch.common.utils.EventManager
-import com.caldremch.common.widget.status.IStatusView
-import com.gyf.immersionbar.ktx.immersionBar
 import com.caldremch.common.widget.DecorViewProxy
-import com.caldremch.common.widget.status.StatusView
+import com.caldremch.common.widget.DecorViewProxyUtils
+import com.caldremch.common.widget.status.IStatusView
 import com.caldremch.common.widget.status.ViewState
 
 /**
@@ -21,16 +20,11 @@ import com.caldremch.common.widget.status.ViewState
  * @describe
  *
  **/
-open class AbsActivity : LifeCycleLogActivity(), BaseInit, IStatusView {
+open class AbsActivity : LifeCycleLogActivity(), BaseInit, IStatusView, IViewModel {
 
     protected lateinit var mContentView: View
     private lateinit var contentViewDelegate: DecorViewProxy
-    open val navigationBarColorRes: Int = android.R.color.white
-    open val statusBarColorRes: Int? = null
-    open val keyboadFixed: Boolean = false
-    open val isUserDataBinding: Boolean = false
 
-    open fun handleDataBinding(li:Int):View? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,38 +34,12 @@ open class AbsActivity : LifeCycleLogActivity(), BaseInit, IStatusView {
 
         if (layoutId != 0) {
             val decorViewProxyBuilder = DecorViewProxy.Builder(this)
-            decorViewProxyBuilder.isUseLoading(isUseLoading)
-
-            if(isUserDataBinding){
-                handleDataBinding(layoutId)?.let { decorViewProxyBuilder.setContentView(it) }
-
-            }else{
-                decorViewProxyBuilder.setContentViewLayoutId(layoutId)
-            }
-
-            if (isUseDefaultTitleBar) {
-                decorViewProxyBuilder.setTitleViewLayoutId(titleViewId)
-                decorViewProxyBuilder.setTitleView(titleView)
-            }
-
-            contentViewDelegate = decorViewProxyBuilder.build()
+            contentViewDelegate = DecorViewProxyUtils.initWith(decorViewProxyBuilder, this, this)
             mContentView = contentViewDelegate.proxySetContentView()
             setContentView(mContentView)
-
             if (isUseStatusBar) {
-                immersionBar {
-                    keyboardEnable(keyboadFixed)
-                    statusBarColorRes?.let { this.statusBarColor(it) }
-                    if (statusBarColorRes == android.R.color.white) {
-                        this.statusBarDarkFont(true, 0.2f)
-                    } else {
-                        this.statusBarDarkFont(false)
-                    }
-                    navigationBarColor(navigationBarColorRes)
-                    titleBar(contentViewDelegate.titleView)
-                }
+                BarUtils.initStatusBar(this, this, contentViewDelegate.titleView)
             }
-
         }
         initTitleBar(contentViewDelegate.titleView)
         initView()
@@ -83,7 +51,7 @@ open class AbsActivity : LifeCycleLogActivity(), BaseInit, IStatusView {
         finish()
     }
 
-    override fun setViewStatus(status: Int ) {
+    override fun setViewStatus(status: Int) {
         contentViewDelegate.statusView?.setViewStatus(status)
     }
 

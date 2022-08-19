@@ -5,28 +5,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.IdRes
-
-import com.caldremch.common.widget.status.IStatusView
-import com.gyf.immersionbar.ktx.immersionBar
-import com.caldremch.common.R
+import com.caldremch.common.utils.BarUtils
 import com.caldremch.common.utils.EventManager
 import com.caldremch.common.widget.DecorViewProxy
+import com.caldremch.common.widget.DecorViewProxyUtils
+import com.caldremch.common.widget.status.IStatusView
 import com.caldremch.common.widget.status.ViewState
-import com.caldremch.common.widget.status.ViewState.Companion.VIEW_STATE_CONTENT
-import com.caldremch.common.widget.status.ViewState.Companion.VIEW_STATE_ERROR
 
 
 /**
  * @author Caldremch
  */
-abstract class BaseCommonFragment : LifeCycleLogFragment(), BaseInit, IStatusView {
+abstract class AbsFragment : LifeCycleLogFragment(), BaseInit, IStatusView {
 
     protected var mIsVisible = false
     private var mIsPrepare = false
     private var mIsFirst = true
+
     protected lateinit var mContentView: View
-    protected lateinit var contentViewDelegate: DecorViewProxy
-    open val keyboadFixed: Boolean = false
+    private lateinit var contentViewDelegate: DecorViewProxy
+
 
     protected val mRootView by lazy { mContentView }
 
@@ -57,7 +55,7 @@ abstract class BaseCommonFragment : LifeCycleLogFragment(), BaseInit, IStatusVie
     }
 
     override fun setViewStatus(status: Int) {
-       contentViewDelegate.statusView?.setViewStatus(status)
+        contentViewDelegate.statusView?.setViewStatus(status)
     }
 
 
@@ -72,16 +70,8 @@ abstract class BaseCommonFragment : LifeCycleLogFragment(), BaseInit, IStatusVie
     }
 
     private fun inflaterView(inflater: LayoutInflater, container: ViewGroup?) {
-        val contentViewDelegateBuilder = DecorViewProxy.Builder(this, inflater, container)
-
-        contentViewDelegateBuilder.setContentViewLayoutId(layoutId).setContentView(layoutView)
-        contentViewDelegateBuilder.isUseLoading(isUseLoading)
-        if (isUseDefaultTitleBar) {
-            contentViewDelegateBuilder.setTitleViewLayoutId(titleViewId)
-            contentViewDelegateBuilder.setTitleView(titleView)
-        }
-
-        contentViewDelegate = contentViewDelegateBuilder.build()
+        val viewBuilder = DecorViewProxy.Builder(this, inflater, container)
+        contentViewDelegate = DecorViewProxyUtils.initWith(viewBuilder, this, this)
         mContentView = contentViewDelegate.proxySetContentView()
     }
 
@@ -105,12 +95,9 @@ abstract class BaseCommonFragment : LifeCycleLogFragment(), BaseInit, IStatusVie
         if (isUseEvent) {
             EventManager.register(this)
         }
-
-
         initTitleBar(contentViewDelegate.titleView)
         initView()
         initData()
-
         initEvent()
         mIsPrepare = true
         mIsFirst = true
@@ -118,25 +105,10 @@ abstract class BaseCommonFragment : LifeCycleLogFragment(), BaseInit, IStatusVie
     }
 
 
-    open val statusBarColorRes: Int? = null
-
-    open val navigationBarColorRes: Int = android.R.color.white
-
     override fun onResume() {
         super.onResume()
         if (isUseStatusBar) {
-            immersionBar {
-                keyboardEnable(keyboadFixed)
-                statusBarColorRes?.let { this.statusBarColor(it) }
-                if (statusBarColorRes == android.R.color.white) {
-                    this.statusBarDarkFont(true, 0.2f)
-                } else {
-                    this.statusBarDarkFont(false)
-                }
-
-                navigationBarColor(navigationBarColorRes)
-                titleBar(contentViewDelegate.titleView)
-            }
+            BarUtils.initStatusBar(this, this, contentViewDelegate.titleView)
         }
     }
 
@@ -155,10 +127,6 @@ abstract class BaseCommonFragment : LifeCycleLogFragment(), BaseInit, IStatusVie
         }
         lazyLoad()
         mIsFirst = false
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     //如果Fragment中有present, 则可以重写present里面的retry方法, 不然, 则重写Fragment的retry

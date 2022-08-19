@@ -1,22 +1,20 @@
 package com.caldremch.common.base
 
 import android.view.View
+import androidx.annotation.ColorInt
 
 /**
  * @author Caldremch
  * @date 2019/1/24
  */
 interface BaseInit {
-    //是否使用沉浸式
     val isUseStatusBar: Boolean
         get() = true
-
-    //是否使用 EventBus
     val isUseEvent: Boolean
         get() = false
     val layoutView: View?
         get() = null
-    val isUseDefaultTitleBar: Boolean
+    val isUseTitleBar: Boolean
         get() = true
     val layoutId: Int
         get() = 0
@@ -24,7 +22,18 @@ interface BaseInit {
         get() = 0
     val titleView: View?
         get() = null
+    val navigationBarColor: Int?
+        get() = null
 
+    @get:ColorInt
+    val statusBarColor: Int?
+        get() = null
+    val keyboardFixed: Boolean
+        get() = false
+    val isUseDataBinding: Boolean
+        get() = false
+
+    fun handleDataBinding(layoutIdRes: Int): View? = null
     fun initView() {}
     fun initTitleBar(titleView: View?) {}
     fun initData() {}

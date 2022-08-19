@@ -4,12 +4,12 @@ plugins {
 }
 
 ext {
-    mySiteUrl="https://github.com/android-module/android-common"
-    myGitUrl="https://github.com/android-module/android-common.git"
-    myLibraryVersion="1.0.0"
-    myLibraryName="android-common"
-    myArtifactId="android-common"
-    myLibraryDescription="android-common framework"
+    mySiteUrl = "https://github.com/android-module/android-common"
+    myGitUrl = "https://github.com/android-module/android-common.git"
+    myLibraryVersion = "1.0.0"
+    myLibraryName = "android-common"
+    myArtifactId = "android-common"
+    myLibraryDescription = "android-common framework"
 }
 
 android {
@@ -40,7 +40,7 @@ android {
 
 dependencies {
     api "androidx.activity:activity-ktx:1.5.1"
-    api "androidx.fragment:fragment-ktx:1.5.1"
+    api "androidx.fragment:fragment-ktx:1.5.2"
     api 'org.greenrobot:eventbus:3.2.0'
     implementation 'com.github.getActivity:TitleBar:9.5'
     implementation 'androidx.core:core-ktx:1.7.0'

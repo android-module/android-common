@@ -6,8 +6,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import com.caldremch.android.common.databinding.ext.MyViewModelLazy
-import com.caldremch.android.common.databinding.utils.TypeUtils
-import com.caldremch.common.base.BaseCommonActivity
+import com.caldremch.common.base.AbsActivity
+import com.caldremch.common.utils.TypeUtils
 
 
 /**
@@ -15,35 +15,27 @@ import com.caldremch.common.base.BaseCommonActivity
  */
 
 
-abstract class BaseDataBindingActivity<VB : ViewDataBinding> : BaseCommonActivity(){
+abstract class BaseDataBindingActivity<VB : ViewDataBinding, VM : ViewModel> :
+    AbsActivity() {
+
     protected lateinit var binding: VB
 
-    override val isUserDataBinding: Boolean
+    override val isUseDataBinding: Boolean
         get() = true
-
-    open fun onBindViewModel(){
-
-    }
-
-    override fun handleDataBinding(li: Int): View {
-        binding = DataBindingUtil.inflate(LayoutInflater.from(this), li, null, false)
-        binding.lifecycleOwner = this
-        onBindViewModel()
-        return binding.root
-    }
-}
-
-abstract class BaseMVVMActivity<VB : ViewDataBinding, VM : ViewModel> :
-    BaseDataBindingActivity<VB>() {
 
     protected lateinit var viewModel: VM
     open fun getVMClass(): Class<VM>? {
         return null
     }
 
-    override fun onBindViewModel() {
+
+    override fun handleDataBinding(layoutIdRes: Int): View {
+        binding = DataBindingUtil.inflate(LayoutInflater.from(this), layoutIdRes, null, false)
+        binding.lifecycleOwner = this
         viewModel = createViewModel(getVMClass() ?: TypeUtils.getClz(this, 1))
+        onViewModelCreated()
         binding.setVariable(getVariableId(), viewModel)
+        return binding.root
     }
 
     abstract fun getVariableId(): Int

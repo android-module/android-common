@@ -4,12 +4,14 @@ import android.content.Context
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import com.caldremch.common.base.BaseInit
+import com.caldremch.common.widget.status.IStatusView
 import com.caldremch.common.widget.status.StatusView
 
 /**
  * Created by Leon on 2022/7/31.
  */
-object DecorViewProxyUtils {
+internal object DecorViewProxyUtils {
 
     fun createStatusView(
         context: Context,
@@ -42,5 +44,24 @@ object DecorViewProxyUtils {
         parentLayout.addView(statusView, contentViewLp)
         return parentLayout
     }
+
+    fun initWith(
+        builder: DecorViewProxy.Builder,
+        baseInit: BaseInit,
+        iStatusView: IStatusView
+    ): DecorViewProxy {
+        if (baseInit.isUseDataBinding) {
+            baseInit.handleDataBinding(baseInit.layoutId)?.let { builder.setContentView(it) }
+        } else {
+            builder.setContentViewLayoutId(baseInit.layoutId).setContentView(baseInit.layoutView)
+        }
+        builder.isUseLoading(iStatusView.isUseLoading)
+        if (baseInit.isUseTitleBar) {
+            builder.setTitleViewLayoutId(baseInit.titleViewId)
+            builder.setTitleView(baseInit.titleView)
+        }
+        return builder.build()
+    }
+
 
 }

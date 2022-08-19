@@ -2,7 +2,7 @@ package com.caldremch.android.http.viewmodel.ext
 
 import android.os.Bundle
 import com.caldremch.android.http.viewmodel.HttpViewModel
-import com.caldremch.common.ext.BaseFragment
+import com.caldremch.common.base.AbsFragment
 import com.caldremch.http.core.framework.RequestContextComposite
 import kotlin.reflect.KClass
 
@@ -10,19 +10,19 @@ import kotlin.reflect.KClass
 /**
  * Created by Leon on 2022/7/10
  */
-abstract class BaseHttpViewModelFragment<VM : HttpViewModel> : BaseFragment() {
+abstract class BaseHttpViewModelFragment<VM : HttpViewModel> : AbsFragment() {
 
-    protected val viewModel: VM by httpViewModels()
+    protected lateinit var viewModel: VM
 
     private val requestContextComposite by lazy { RequestContextComposite() }
 
     abstract fun getVMClass(): KClass<VM>
 
     private fun initViewModelWithin() {
-        viewModel.dialogEvent.observe(this){
+        viewModel.dialogEvent.observe(this) {
 
         }
-        viewModel.requestContext.observe(this){
+        viewModel.requestContext.observe(this) {
             requestContextComposite.add(it)
         }
     }
