@@ -3,17 +3,17 @@ package com.caldremch.android.http.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.caldremch.http.core.framework.handle.IDialogHandle
-import com.caldremch.http.core.framework.handle.IRequestContext
-import com.caldremch.http.core.framework.handle.IRequestHandle
+import com.caldremch.android.http.viewmodel.adapter.IIDialogHandleAdapter
+import com.caldremch.android.http.viewmodel.adapter.IRequestContextAdapter
+import com.caldremch.android.http.viewmodel.adapter.IRequestHandleAdapter
 
-open class HttpViewModel() : ViewModel(), IDialogHandle, IRequestHandle {
+open class HttpViewModel() : ViewModel(), IIDialogHandleAdapter, IRequestHandleAdapter {
     private val _dialogEvent = MutableLiveData<Boolean>()
     val dialogEvent: LiveData<Boolean>
         get() = _dialogEvent
 
-    private val _requestContext = MutableLiveData<IRequestContext>()
-    val requestContext: LiveData<IRequestContext>
+    private val _requestContext = MutableLiveData<IRequestContextAdapter>()
+    val requestContext: LiveData<IRequestContextAdapter>
         get() = _requestContext
 
 
@@ -25,7 +25,7 @@ open class HttpViewModel() : ViewModel(), IDialogHandle, IRequestHandle {
         _dialogEvent.postValue(false)
     }
 
-    override fun onRequestHandle(ctx: IRequestContext) {
+    override fun onRequestHandle(ctx: IRequestContextAdapter) {
         _requestContext.postValue(ctx)
     }
 

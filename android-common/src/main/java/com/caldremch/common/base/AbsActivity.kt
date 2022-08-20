@@ -20,7 +20,7 @@ import com.caldremch.common.widget.status.ViewState
  * @describe
  *
  **/
-open class AbsActivity : LifeCycleLogActivity(), BaseInit, IStatusView, IViewModel {
+open class AbsActivity : LifeCycleLogActivity(), BaseInit, IStatusView {
 
     protected lateinit var mContentView: View
     private lateinit var contentViewDelegate: DecorViewProxy

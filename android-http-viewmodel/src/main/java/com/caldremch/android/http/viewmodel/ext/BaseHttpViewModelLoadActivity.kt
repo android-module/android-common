@@ -7,10 +7,9 @@ import com.caldremch.android.http.viewmodel.HttpViewModelPageLoad
  */
 abstract class BaseHttpViewModelLoadActivity<VM : HttpViewModelPageLoad> :
     BaseHttpViewModelActivity<VM>() {
-
     private val pageLoadManager by lazy { PageLoadManager() }
     override fun onCreate(savedInstanceState: Bundle?) {
-        pageLoadManager.initPageStatusViewModel(this, viewModel, this)
         super.onCreate(savedInstanceState)
+        pageLoadManager.initPageStatusViewModel(this, viewModel, this)
     }
 }

@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import com.caldremch.android.common.databinding.ext.MyViewModelLazy
+import com.caldremch.android.http.viewmodel.IBaseViewModel
 import com.caldremch.common.base.AbsActivity
 import com.caldremch.common.utils.TypeUtils
 
@@ -16,19 +17,13 @@ import com.caldremch.common.utils.TypeUtils
 
 
 abstract class BaseDataBindingActivity<VB : ViewDataBinding, VM : ViewModel> :
-    AbsActivity() {
-
+    AbsActivity() , IBaseViewModel{
     protected lateinit var binding: VB
 
     override val isUseDataBinding: Boolean
         get() = true
 
     protected lateinit var viewModel: VM
-    open fun getVMClass(): Class<VM>? {
-        return null
-    }
-
-
     override fun handleDataBinding(layoutIdRes: Int): View {
         binding = DataBindingUtil.inflate(LayoutInflater.from(this), layoutIdRes, null, false)
         binding.lifecycleOwner = this

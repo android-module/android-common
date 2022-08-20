@@ -1,4 +1,4 @@
-package com.caldremch.android.http.viewmodel.ext
+package com.caldremch.android.http.viewmodel.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

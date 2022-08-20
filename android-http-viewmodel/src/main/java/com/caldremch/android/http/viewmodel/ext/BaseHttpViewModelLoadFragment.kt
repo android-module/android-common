@@ -9,7 +9,7 @@ abstract class BaseHttpViewModelLoadFragment<VM : HttpViewModelPageLoad> :
     BaseHttpViewModelFragment<VM>() {
    private val pageLoadManager by lazy { PageLoadManager() }
     override fun onCreate(savedInstanceState: Bundle?) {
-        pageLoadManager.initPageStatusViewModel(this, viewModel, this)
         super.onCreate(savedInstanceState)
+        pageLoadManager.initPageStatusViewModel(this, viewModel, this)
     }
 }

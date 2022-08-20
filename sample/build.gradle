@@ -45,6 +45,7 @@ dependencies {
     implementation 'com.github.getActivity:TitleBar:9.5'
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation project(":android-common")
+    implementation project(":android-http-viewmodel")
     implementation project(":android-common-databinding")
 //    implementation project(":android-common-ext")
     implementation 'androidx.appcompat:appcompat:1.4.2'
