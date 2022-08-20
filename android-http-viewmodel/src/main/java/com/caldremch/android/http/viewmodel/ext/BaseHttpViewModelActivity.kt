@@ -35,6 +35,7 @@ abstract class BaseHttpViewModelActivity<VM : HttpViewModel> : AbsActivity() {
 
     open fun getVMClass(): Class<VM>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
+
         viewModel = createViewModel(getVMClass() ?: TypeUtils.getClz<VM>(this, 0))
         initViewModelWithin()
         onViewModelCreated()

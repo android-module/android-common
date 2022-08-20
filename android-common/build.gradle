@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'aliyun.publish'
 }
 
 ext {
@@ -10,6 +11,12 @@ ext {
     myLibraryName = "android-common"
     myArtifactId = "android-common"
     myLibraryDescription = "android-common framework"
+}
+
+aliyunPublish {
+    group = myPublishedGroupId
+    version = myLibraryVersion
+    artifactId = myArtifactId
 }
 
 android {
