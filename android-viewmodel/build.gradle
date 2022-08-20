@@ -64,7 +64,7 @@ ext {
 ext {
     mySiteUrl = "https://github.com/android-module/android-common"
     myGitUrl = "https://github.com/android-module/android-common.git"
-    myLibraryVersion = android_common_version
+    myLibraryVersion = android_viewmodel_version
     myLibraryName = "android-viewmodel"
     myArtifactId = "android-viewmodel"
     myLibraryDescription = "android-viewmodel framework"
