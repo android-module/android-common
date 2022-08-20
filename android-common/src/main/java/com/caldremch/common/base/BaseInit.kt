@@ -2,6 +2,7 @@ package com.caldremch.common.base
 
 import android.view.View
 import androidx.annotation.ColorInt
+import com.caldremch.common.adapter.IEventAdapter
 
 /**
  * @author Caldremch
@@ -33,6 +34,7 @@ interface BaseInit {
     val isUseDataBinding: Boolean
         get() = false
 
+    fun createEventAdapter(): IEventAdapter? = null
     fun handleDataBinding(layoutIdRes: Int): View? = null
     fun initView() {}
     fun initTitleBar(titleView: View?) {}

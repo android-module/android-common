@@ -21,17 +21,13 @@ abstract class AbsFragment : LifeCycleLogFragment(), BaseInit, IStatusView {
     protected var mIsVisible = false
     private var mIsPrepare = false
     private var mIsFirst = true
-
     protected lateinit var mContentView: View
     private lateinit var contentViewDelegate: DecorViewProxy
-
-
     protected val mRootView by lazy { mContentView }
 
     fun rootXml(): View {
         return contentViewDelegate.getRoomXml()
     }
-
 
     protected fun onInvisible() {
 
@@ -74,8 +70,6 @@ abstract class AbsFragment : LifeCycleLogFragment(), BaseInit, IStatusView {
         requireActivity().finish()
     }
 
-
-    open val rightTitle: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

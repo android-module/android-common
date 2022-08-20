@@ -29,6 +29,7 @@ abstract class BaseFragment : AbsFragment() {
         get() = Color.WHITE
     open val leftIcon: Int? = null
     open val titleColor: Int? = null
+    open val rightTitle: String? = null
 
     override val titleView: View?
         get() = LayoutInflater.from(requireContext()).inflate(R.layout.common_titlebar_layout, null)

@@ -1,24 +1,24 @@
 package com.caldremch.common.utils
 
-import org.greenrobot.eventbus.EventBus
+import com.caldremch.common.adapter.IEventAdapter
+import org.koin.java.KoinJavaComponent
 
 /**
  * Created by Caldremch on 2017-05-06 12:54
  */
 object EventManager {
+
+    private var evenAdapter: IEventAdapter = KoinJavaComponent.get(IEventAdapter::class.java)
+
     fun register(`object`: Any?) {
-        if (!EventBus.getDefault().isRegistered(`object`)) {
-            EventBus.getDefault().register(`object`)
-        }
+        evenAdapter.register(`object`)
     }
 
     fun unregister(`object`: Any?) {
-        if (EventBus.getDefault().isRegistered(`object`)) {
-            EventBus.getDefault().unregister(`object`)
-        }
+        evenAdapter.unregister(`object`)
     }
 
     fun post(`object`: Any?) {
-        EventBus.getDefault().post(`object`)
+        evenAdapter.post(`object`)
     }
 }

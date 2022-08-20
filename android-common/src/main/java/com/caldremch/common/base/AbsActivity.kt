@@ -21,17 +21,13 @@ import com.caldremch.common.widget.status.ViewState
  *
  **/
 open class AbsActivity : LifeCycleLogActivity(), BaseInit, IStatusView {
-
     protected lateinit var mContentView: View
     private lateinit var contentViewDelegate: DecorViewProxy
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (isUseEvent) {
             EventManager.register(this)
         }
-
         if (layoutId != 0) {
             val decorViewProxyBuilder = DecorViewProxy.Builder(this)
             contentViewDelegate = DecorViewProxyUtils.initWith(decorViewProxyBuilder, this, this)
@@ -67,6 +63,12 @@ open class AbsActivity : LifeCycleLogActivity(), BaseInit, IStatusView {
         setViewStatus(ViewState.VIEW_STATE_LOADING)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        if (isUseEvent) {
+            EventManager.unregister(this)
+        }
+    }
 
 }
 
