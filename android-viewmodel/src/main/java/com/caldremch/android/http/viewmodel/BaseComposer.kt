@@ -12,7 +12,6 @@ import com.caldremch.android.http.viewmodel.adapter.IRequestContextCompositeAdap
 import com.caldremch.android.http.viewmodel.adapter.RequestContextCompositeAdapterImpl
 import com.caldremch.android.http.viewmodel.ext.IHttpDialogEvent
 import com.caldremch.android.http.viewmodel.viewmodels.MyViewModelLazy
-import com.caldremch.android.log.debugLog
 import com.caldremch.common.utils.TypeUtils
 import org.koin.core.parameter.parametersOf
 import org.koin.java.KoinJavaComponent.get
@@ -34,13 +33,11 @@ object BaseComposer {
     }
 
     fun <VM : HttpViewModel> initViewModel(
-        viewModel: VM,
-        context: Context,
-        lifecycleOwner: LifecycleOwner
+        viewModel: VM, context: Context, lifecycleOwner: LifecycleOwner
     ) {
         val httpDialogEvent: IHttpDialogEvent =
             get(IHttpDialogEvent::class.java) { parametersOf(context) }
-           val requestContextComposite: IRequestContextCompositeAdapter  by lazy { RequestContextCompositeAdapterImpl() }
+        val requestContextComposite: IRequestContextCompositeAdapter by lazy { RequestContextCompositeAdapterImpl() }
         //监听ViewModel
         viewModel.dialogEvent.observe(lifecycleOwner) {
             if (it) {
@@ -50,7 +47,6 @@ object BaseComposer {
             }
         }
         viewModel.requestContext.observe(lifecycleOwner) {
-            debugLog { "添加请求实例" }
             requestContextComposite.add(it)
         }
         lifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
