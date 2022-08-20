@@ -16,8 +16,8 @@ import com.caldremch.common.utils.TypeUtils
  */
 
 
-abstract class BaseDataBindingActivity<VB : ViewDataBinding, VM : ViewModel> :
-    AbsActivity() , IBaseViewModel{
+abstract class BaseDataBindingActivity<VB : ViewDataBinding, VM : ViewModel> : AbsActivity(),
+    IBaseViewModel<VM> {
     protected lateinit var binding: VB
 
     override val isUseDataBinding: Boolean
@@ -39,12 +39,10 @@ abstract class BaseDataBindingActivity<VB : ViewDataBinding, VM : ViewModel> :
         val factoryPromise = {
             defaultViewModelProviderFactory
         }
-        return MyViewModelLazy(
-            clz,
+        return MyViewModelLazy(clz,
             { viewModelStore },
             factoryPromise,
-            { this.defaultViewModelCreationExtras }
-        ).value
+            { this.defaultViewModelCreationExtras }).value
     }
 
 
