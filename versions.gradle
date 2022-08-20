@@ -1,0 +1,18 @@
+def isRemote() {
+    def what = false
+    if (project.hasProperty("remoteDep")) {
+        what = remoteDep.toBoolean()
+    }
+    return what
+}
+
+ext {
+    isRemote = this.&isRemote
+}
+
+project.ext {
+    remoteDep = false
+    android_common_version = "1.0.1-rc1"
+    android_http_viewmodel_version = "1.0.1-rc1"
+}
+

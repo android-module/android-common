@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'aliyun.publish'
 }
+apply from: "../versions.gradle"
 
 ext {
     mySiteUrl = "https://github.com/android-module/android-common"
