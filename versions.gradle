@@ -13,6 +13,6 @@ ext {
 project.ext {
     remoteDep = false
     android_common_version = "1.0.1-rc3"
-    android_viewmodel_version = "1.0.1-rc4"
+    android_viewmodel_version = "1.0.1-rc5"
 }
 
