@@ -8,7 +8,7 @@ apply from: "../versions.gradle"
 ext {
     mySiteUrl = "https://github.com/android-module/android-common"
     myGitUrl = "https://github.com/android-module/android-common.git"
-    myLibraryVersion = "1.0.0"
+    myLibraryVersion = android_common_version
     myLibraryName = "android-common"
     myArtifactId = "android-common"
     myLibraryDescription = "android-common framework"
@@ -62,4 +62,4 @@ dependencies {
 }
 
 
-apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+//apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"

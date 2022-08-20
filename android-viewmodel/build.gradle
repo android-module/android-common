@@ -1,8 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'aliyun.publish'
 }
 
+apply from: "../versions.gradle"
 
 android {
     namespace 'com.caldremch.android.http.viewmodel'
@@ -37,9 +39,11 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
     implementation "androidx.fragment:fragment-ktx:1.5.2"
     implementation 'io.github.caldremch:android-logger:1.0.0'
-//    implementation 'io.github.caldremch:android-common:1.0.0'
-    implementation(project(":android-common"))
-//    implementation "io.github.caldremch:android-http:1.0.1-rc3"
+    if (isRemote()) {
+        implementation "io.github.caldremch:android-common:$android_common_version"
+    } else {
+        implementation(project(":android-common"))
+    }
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     testImplementation 'junit:junit:4.13.2'
@@ -50,10 +54,26 @@ dependencies {
 ext {
     mySiteUrl = "https://github.com/android-module/android-common"
     myGitUrl = "https://github.com/android-module/android-common.git"
-    myLibraryVersion = "1.0.0-rc3"
-    myLibraryName = "android-http-viewmodel"
-    myArtifactId = "android-http-viewmodel"
+    myLibraryVersion = "1.0.1-rc1"
+    myLibraryName = "android-viewmodel"
+    myArtifactId = "android-viewmodel"
     myLibraryDescription = "android-http-viewmodel"
 }
 
-apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+
+ext {
+    mySiteUrl = "https://github.com/android-module/android-common"
+    myGitUrl = "https://github.com/android-module/android-common.git"
+    myLibraryVersion = android_common_version
+    myLibraryName = "android-viewmodel"
+    myArtifactId = "android-viewmodel"
+    myLibraryDescription = "android-viewmodel framework"
+}
+
+aliyunPublish {
+    group = myPublishedGroupId
+    version = myLibraryVersion
+    artifactId = myArtifactId
+}
+
+//apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
