@@ -13,7 +13,7 @@ import com.caldremch.common.base.AbsFragment
 abstract class BaseHttpViewModelFragment<VM : HttpViewModel> : AbsFragment(), IBaseViewModel<VM> {
     protected lateinit var viewModel: VM
     override fun onCreate(savedInstanceState: Bundle?) {
-        BaseComposer.injectVM<VM>(this)
+        viewModel = BaseComposer.injectVM<VM>(this)
         super.onCreate(savedInstanceState)
         onViewModelCreated()
     }
