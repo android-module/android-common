@@ -32,19 +32,6 @@ abstract class AbsFragment : LifeCycleLogFragment(), BaseInit, IStatusView {
         return contentViewDelegate.getRoomXml()
     }
 
-//    @Deprecated("Deprecated in Java")
-//    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-//        super.setUserVisibleHint(isVisibleToUser)
-//        if (userVisibleHint) {
-//            //JLog.d(this.getClass().getSimpleName()+"-->可见:"+getUserVisibleHint());
-//            mIsVisible = true
-//            onVisible()
-//            loadData()
-//        } else {
-//            mIsVisible = false
-//            onInvisible()
-//        }
-//    }
 
     protected fun onInvisible() {
 

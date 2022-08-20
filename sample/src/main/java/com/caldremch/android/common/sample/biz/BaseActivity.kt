@@ -1,13 +1,13 @@
-package com.caldremch.common.ext
+package com.caldremch.android.common.sample.biz
 
 import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
+import com.caldremch.android.common.sample.R
 import com.caldremch.android.log.debugLog
-import com.caldremch.common.R
-import com.caldremch.common.base.BaseCommonActivity
+import com.caldremch.common.base.AbsActivity
 import com.caldremch.common.base.ILifeCycleLogger
 import com.hjq.bar.OnTitleBarListener
 import com.hjq.bar.TitleBar
@@ -15,8 +15,7 @@ import com.hjq.bar.TitleBar
 /**
  * Created by Leon on 2022/7/6
  */
-@Deprecated(message = "do not use, customize by yourself", level = DeprecationLevel.ERROR)
-open class BaseActivity : BaseCommonActivity() {
+open class BaseActivity : AbsActivity() {
 
     open val leftIcon: Int? = null
 

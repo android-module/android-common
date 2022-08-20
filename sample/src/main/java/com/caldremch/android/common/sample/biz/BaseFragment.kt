@@ -1,10 +1,10 @@
-package com.caldremch.common.ext
+package com.caldremch.android.common.sample.biz
 
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
+import com.caldremch.android.common.sample.R
 import com.caldremch.android.log.debugLog
-import com.caldremch.common.R
 import com.caldremch.common.base.AbsFragment
 import com.caldremch.common.base.ILifeCycleLogger
 import com.hjq.bar.OnTitleBarListener
@@ -14,7 +14,6 @@ import com.hjq.bar.TitleBar
 /**
  * @author Caldremch
  */
-@Deprecated(message = "do not use, customize by yourself", level = DeprecationLevel.ERROR)
 abstract class BaseFragment : AbsFragment() {
 
 

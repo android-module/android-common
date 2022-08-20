@@ -20,7 +20,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Common"
-include ':app'
+include ':sample'
 include ':android-common'
 include ':android-tools-core'
 include ':android-tools-impl'
