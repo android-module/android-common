@@ -25,9 +25,6 @@ class MainActivity2 : BaseDataBindingActivity<ActivityMain2Binding, Main2ViewMod
     override val statusBarColor: Int
         get() = Color.RED
 
-    override val titleBarTitle: String
-        get() = "super.titleBarTitle"
-
 
     override val layoutId: Int
         get() = R.layout.activity_main2

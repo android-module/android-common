@@ -63,14 +63,6 @@ abstract class AbsFragment : LifeCycleLogFragment(), BaseInit, IStatusView {
         return mContentView.findViewById(id)
     }
 
-
-    override fun onLeftClick(titleView: View?) {
-
-        //查看当前页面是否有Navigation
-        requireActivity().finish()
-    }
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (isUseEvent) {

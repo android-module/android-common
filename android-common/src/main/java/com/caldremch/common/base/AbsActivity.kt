@@ -43,9 +43,6 @@ open class AbsActivity : LifeCycleLogActivity(), BaseInit, IStatusView {
         initEvent()
     }
 
-    override fun onLeftClick(titleView: View?) {
-        finish()
-    }
 
     override fun setViewStatus(status: Int) {
         contentViewDelegate.statusView?.setViewStatus(status)

@@ -59,8 +59,4 @@ interface IStatusView {
      * 一般是页面使用功能
      */
     fun setViewStatus(@ViewState status: Int)
-
-    val titleBarTitle: String
-        get() = ""
-
 }

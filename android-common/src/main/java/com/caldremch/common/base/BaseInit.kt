@@ -40,6 +40,4 @@ interface BaseInit {
     fun initTitleBar(titleView: View?) {}
     fun initData() {}
     fun initEvent() {}
-    fun onLeftClick(titleView: View?) {}
-    fun onRightClick(titleView: View?) {}
 }
