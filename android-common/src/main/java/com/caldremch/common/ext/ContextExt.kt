@@ -9,7 +9,7 @@ import android.os.Bundle
  * Created by Leon on 2022/7/9
  */
 
-inline fun <reified T : Activity> Context.startActivity(bundle: Bundle? = null) {
+inline fun <reified T : Activity> Context.launch(bundle: Bundle? = null) {
     val intent = Intent(this, T::class.java)
     bundle?.let { intent.putExtras(it) }
     if (this !is Activity) {
@@ -18,7 +18,7 @@ inline fun <reified T : Activity> Context.startActivity(bundle: Bundle? = null) 
     startActivity(intent)
 }
 
-fun Context.startActivity(clz: Class<*>, bundle: Bundle? = null) {
+fun Context.launch(clz: Class<*>, bundle: Bundle? = null) {
     val intent = Intent(this, clz)
     bundle?.let { intent.putExtras(it) }
     if (this !is Activity) {
