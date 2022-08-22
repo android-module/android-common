@@ -37,7 +37,7 @@ internal object BarUtils {
         } else {
             this.statusBarDarkFont(false)
         }
-        baseInit.navigationBarColor?.let { this.navigationBarColor(it) }
+        baseInit.navigationBarColor?.let { this.navigationBarColorInt(it) }
         titleBar(titleView)
     }
 

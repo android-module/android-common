@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'aliyun.publish'
+//    id 'aliyun.publish'
 }
 
 apply from: "../versions.gradle"
@@ -51,15 +51,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
 
-ext {
-    mySiteUrl = "https://github.com/android-module/android-common"
-    myGitUrl = "https://github.com/android-module/android-common.git"
-    myLibraryVersion = "1.0.1-rc1"
-    myLibraryName = "android-viewmodel"
-    myArtifactId = "android-viewmodel"
-    myLibraryDescription = "android-http-viewmodel"
-}
-
 
 ext {
     mySiteUrl = "https://github.com/android-module/android-common"
@@ -70,10 +61,10 @@ ext {
     myLibraryDescription = "android-viewmodel framework"
 }
 
-aliyunPublish {
-    group = myPublishedGroupId
-    version = myLibraryVersion
-    artifactId = myArtifactId
-}
+//aliyunPublish {
+//    group = myPublishedGroupId
+//    version = myLibraryVersion
+//    artifactId = myArtifactId
+//}
 
-//apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
