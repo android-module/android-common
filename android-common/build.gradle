@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'aliyun.publish'
+//    id 'aliyun.publish'
 }
 apply from: "../versions.gradle"
 
@@ -14,11 +14,11 @@ ext {
     myLibraryDescription = "android-common framework"
 }
 
-aliyunPublish {
-    group = myPublishedGroupId
-    version = myLibraryVersion
-    artifactId = myArtifactId
-}
+//aliyunPublish {
+//    group = myPublishedGroupId
+//    version = myLibraryVersion
+//    artifactId = myArtifactId
+//}
 
 android {
     compileSdk 32
@@ -62,4 +62,4 @@ dependencies {
 }
 
 
-//apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
