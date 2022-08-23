@@ -21,4 +21,8 @@ object EventManager {
     fun post(`object`: Any?) {
         evenAdapter.post(`object`)
     }
+
+    fun postStick(`object`: Any?) {
+        evenAdapter.postStick(`object`)
+    }
 }

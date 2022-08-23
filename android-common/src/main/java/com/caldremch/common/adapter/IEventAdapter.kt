@@ -8,4 +8,5 @@ interface IEventAdapter {
     fun unregister(`object`: Any?)
     fun isRegistered(`object`: Any?)
     fun post(`object`: Any?)
+    fun postStick(`object`: Any?)
 }
