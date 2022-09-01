@@ -1,4 +1,4 @@
-package com.caldremch.android.http.viewmodel
+package com.caldremch.android.http.adapter
 
 import android.content.Context
 import androidx.activity.ComponentActivity
@@ -8,11 +8,6 @@ import androidx.lifecycle.HasDefaultViewModelProviderFactory
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.CreationExtras
-import com.caldremch.android.http.adapter.HttpViewModel
-import com.caldremch.android.http.adapter.IRequestContextCompositeAdapter
-import com.caldremch.android.http.adapter.RequestContextCompositeAdapterImpl
-import com.caldremch.android.http.adapter.IHttpDialogEvent
-import com.caldremch.android.http.adapter.MyViewModelLazy
 import com.caldremch.common.utils.TypeUtils
 import org.koin.core.parameter.parametersOf
 import org.koin.java.KoinJavaComponent.get
@@ -25,9 +20,9 @@ import org.koin.java.KoinJavaComponent.get
  */
 object BaseComposer {
 
-    fun <VM : HttpViewModel> injectVM(obj: Fragment): VM {
+    fun <VM : HttpViewModel> injectVM(obj: Fragment, vmIndex:Int = 0): VM {
         //创建ViewModel
-        val viewModel = createFragmentViewModel<VM>(obj, TypeUtils.getClz<VM>(obj, 0))
+        val viewModel = createFragmentViewModel(obj, TypeUtils.getClz<VM>(obj, vmIndex))
         //初始化ViewModel
         initViewModel(viewModel, obj.requireContext(), obj)
         return viewModel
@@ -57,17 +52,17 @@ object BaseComposer {
         })
     }
 
-    fun <VM : HttpViewModel> injectVM(obj: ComponentActivity): VM {
+    fun <VM : HttpViewModel> injectVM(obj: ComponentActivity, vmIndex:Int = 0): VM {
         //创建ViewModel
-        val viewModel = createActivityViewModel<VM>(obj, TypeUtils.getClz<VM>(obj, 0))
+        val viewModel = createActivityViewModel(obj, TypeUtils.getClz<VM>(obj, vmIndex))
         initViewModel(viewModel, obj, obj)
         return viewModel
     }
 
 
-    private fun <VM : ViewModel> createFragmentViewModel(fragment: Fragment, clz: Class<VM>): VM {
+     fun <VM : ViewModel> createFragmentViewModel(fragment: Fragment, clz: Class<VM>): VM {
         val owner by lazy(LazyThreadSafetyMode.NONE) { fragment }
-        return MyViewModelLazy<VM>(clz, { owner.viewModelStore }, {
+        return MyViewModelLazy(clz, { owner.viewModelStore }, {
             (owner as? HasDefaultViewModelProviderFactory)?.defaultViewModelProviderFactory
                 ?: fragment.defaultViewModelProviderFactory
         }, {
@@ -76,13 +71,13 @@ object BaseComposer {
         }).value
     }
 
-    private fun <VM : ViewModel> createActivityViewModel(
+     fun <VM : ViewModel> createActivityViewModel(
         activity: ComponentActivity, clz: Class<VM>
     ): VM {
         val factoryPromise = {
             activity.defaultViewModelProviderFactory
         }
-        return MyViewModelLazy<VM>(clz,
+        return MyViewModelLazy(clz,
             { activity.viewModelStore },
             factoryPromise,
             { activity.defaultViewModelCreationExtras }).value

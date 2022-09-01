@@ -1,7 +1,7 @@
 package com.caldremch.android.http.viewmodel.ext
 
 import android.os.Bundle
-import com.caldremch.android.http.viewmodel.BaseComposer
+import com.caldremch.android.http.adapter.BaseComposer
 import com.caldremch.android.http.adapter.HttpViewModel
 import com.caldremch.android.http.adapter.IBaseViewModel
 import com.caldremch.common.base.AbsActivity
