@@ -13,6 +13,8 @@ ext {
 project.ext {
     remoteDep = false
     android_common_version = "1.0.1-rc8"
+    android_common_adapter_version = "1.0.0-rc1"
+    android_common_databinding_version = "1.0.0-rc1"
     android_viewmodel_version = "1.0.1-rc8"
 }
 

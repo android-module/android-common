@@ -43,7 +43,7 @@ dependencies {
     implementation("io.github.caldremch:android-http:1.0.1-rc3")
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation(project(":android-common"))
-    implementation(project(":android-http-adapter"))
+    implementation implementation(project(':android-common-adapter',))
     implementation 'androidx.appcompat:appcompat:1.4.2'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
