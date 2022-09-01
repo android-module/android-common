@@ -8,9 +8,10 @@ import androidx.lifecycle.HasDefaultViewModelProviderFactory
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.CreationExtras
-import com.caldremch.android.http.viewmodel.adapter.IRequestContextCompositeAdapter
-import com.caldremch.android.http.viewmodel.adapter.RequestContextCompositeAdapterImpl
-import com.caldremch.android.http.viewmodel.ext.IHttpDialogEvent
+import com.caldremch.android.http.adapter.HttpViewModel
+import com.caldremch.android.http.adapter.IRequestContextCompositeAdapter
+import com.caldremch.android.http.adapter.RequestContextCompositeAdapterImpl
+import com.caldremch.android.http.adapter.IHttpDialogEvent
 import com.caldremch.android.http.viewmodel.viewmodels.MyViewModelLazy
 import com.caldremch.common.utils.TypeUtils
 import org.koin.core.parameter.parametersOf

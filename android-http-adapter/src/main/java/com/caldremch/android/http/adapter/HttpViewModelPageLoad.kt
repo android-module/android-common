@@ -1,4 +1,4 @@
-package com.caldremch.android.http.viewmodel
+package com.caldremch.android.http.adapter
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

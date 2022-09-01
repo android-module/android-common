@@ -9,7 +9,7 @@ import kotlin.reflect.KClass
 /**
  * Created by Leon on 2022/8/18.
  */
-public class MyViewModelLazy<VM : ViewModel> @JvmOverloads constructor(
+class MyViewModelLazy<VM : ViewModel> @JvmOverloads constructor(
     private val viewModelClass:  Class<VM>,
     private val storeProducer: () -> ViewModelStore,
     private val factoryProducer: () -> ViewModelProvider.Factory,

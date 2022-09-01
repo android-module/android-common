@@ -1,4 +1,4 @@
-package com.caldremch.android.http.viewmodel.ext
+package com.caldremch.android.http.adapter
 
 /**
  * Created by Leon on 2022/8/11.

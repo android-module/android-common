@@ -1,7 +1,7 @@
 package com.caldremch.android.http.viewmodel.ext
 
 import androidx.lifecycle.LifecycleOwner
-import com.caldremch.android.http.viewmodel.HttpViewModelPageLoad
+import com.caldremch.android.http.adapter.HttpViewModelPageLoad
 import com.caldremch.common.widget.status.IStatusView
 import com.caldremch.common.widget.status.ViewState
 
