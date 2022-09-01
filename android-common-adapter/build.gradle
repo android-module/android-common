@@ -51,4 +51,6 @@ ext {
     myArtifactId = "android-common-adapter"
     myLibraryDescription = "android-common-adapter framework"
 }
+
+
 apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
