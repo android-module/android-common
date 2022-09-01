@@ -12,7 +12,7 @@ import com.caldremch.android.http.adapter.HttpViewModel
 import com.caldremch.android.http.adapter.IRequestContextCompositeAdapter
 import com.caldremch.android.http.adapter.RequestContextCompositeAdapterImpl
 import com.caldremch.android.http.adapter.IHttpDialogEvent
-import com.caldremch.android.http.viewmodel.viewmodels.MyViewModelLazy
+import com.caldremch.android.http.adapter.MyViewModelLazy
 import com.caldremch.common.utils.TypeUtils
 import org.koin.core.parameter.parametersOf
 import org.koin.java.KoinJavaComponent.get

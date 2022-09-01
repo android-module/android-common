@@ -5,8 +5,8 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
-import com.caldremch.android.common.databinding.ext.MyViewModelLazy
 import com.caldremch.android.http.adapter.IBaseViewModel
+import com.caldremch.android.http.adapter.MyViewModelLazy
 import com.caldremch.common.base.AbsActivity
 import com.caldremch.common.utils.TypeUtils
 

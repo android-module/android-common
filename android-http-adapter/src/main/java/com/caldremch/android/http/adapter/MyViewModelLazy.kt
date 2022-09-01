@@ -1,4 +1,4 @@
-package com.caldremch.android.http.viewmodel.viewmodels
+package com.caldremch.android.http.adapter
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
