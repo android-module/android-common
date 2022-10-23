@@ -1,18 +1,18 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-//    id 'aliyun.publish'
+//
 }
 
 apply from: "../versions.gradle"
 
 android {
     namespace 'com.caldremch.android.http.viewmodel'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         minSdk 21
-        targetSdk 32
+        targetSdk 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -38,7 +38,7 @@ dependencies {
     implementation "androidx.activity:activity-ktx:1.5.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
     implementation "androidx.fragment:fragment-ktx:1.5.2"
-    implementation 'io.github.caldremch:android-logger:1.0.2'
+    implementation "io.github.caldremch:android-logger:$android_logger_version"
     if (isRemote()) {
         implementation "io.github.caldremch:android-common:$android_common_version"
         api "io.github.caldremch:android-common-adapter:$android_common_adapter_version"

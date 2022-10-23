@@ -2,14 +2,15 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
+apply from: "../versions.gradle"
 
 android {
     namespace 'com.caldremch.common.tools.impl'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         minSdk 21
-        targetSdk 32
+        targetSdk 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -34,24 +35,23 @@ dependencies {
 
 //    implementation(project(":android-tools-core"))
     implementation 'io.github.caldremch:android-tools-core:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'io.insert-koin:koin-android:3.2.0'
     implementation 'com.blankj:utilcodex:1.31.0'
     implementation "com.github.bumptech.glide:glide:4.13.2"
     implementation 'io.github.lucksiege:pictureselector:v3.10.5'
-    implementation 'io.github.caldremch:android-logger:1.0.0'
+    implementation "io.github.caldremch:android-logger:$android_logger_version"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
 
 ext {
-    mySiteUrl="https://github.com/android-module/android-common"
-    myGitUrl="https://github.com/android-module/android-common.git"
-    myLibraryVersion="1.0.2"
-    myLibraryName="android-tools-impl"
-    myArtifactId="android-tools-impl"
-    myLibraryDescription="android-tools-impl framework"
+    mySiteUrl = "https://github.com/android-module/android-common"
+    myGitUrl = "https://github.com/android-module/android-common.git"
+    myLibraryVersion = "1.0.2"
+    myLibraryName = "android-tools-impl"
+    myArtifactId = "android-tools-impl"
+    myLibraryDescription = "android-tools-impl framework"
 }
 
 apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"

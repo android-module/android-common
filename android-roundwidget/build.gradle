@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         minSdk 21
-        targetSdk 32
+        targetSdk 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -36,12 +36,12 @@ dependencies {
 }
 
 ext {
-    mySiteUrl="https://github.com/android-module/android-common"
-    myGitUrl="https://github.com/android-module/android-common.git"
-    myLibraryVersion="1.0.0"
-    myLibraryName="android-roundwidget"
-    myArtifactId="android-roundwidget"
-    myLibraryDescription="android-roundwidget"
+    mySiteUrl = "https://github.com/android-module/android-common"
+    myGitUrl = "https://github.com/android-module/android-common.git"
+    myLibraryVersion = "1.0.0"
+    myLibraryName = "android-roundwidget"
+    myArtifactId = "android-roundwidget"
+    myLibraryDescription = "android-roundwidget"
 }
 
 apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
