@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
+apply from: "../versions.gradle"
 
 android {
     namespace 'com.caldremch.android.select'
@@ -42,7 +43,7 @@ dependencies {
 ext {
     mySiteUrl="https://github.com/android-module/android-common"
     myGitUrl="https://github.com/android-module/android-common.git"
-    myLibraryVersion="1.0.0"
+    myLibraryVersion=android_multi_select_version
     myLibraryName="android-multi-select"
     myArtifactId="android-multi-select"
     myLibraryDescription="android-multi-select framework"

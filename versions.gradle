@@ -16,5 +16,6 @@ project.ext {
     android_common_adapter_version = "1.0.0-rc1"
     android_common_databinding_version = "1.0.0-rc1"
     android_viewmodel_version = "1.0.1-rc9"
+    android_multi_select_version = "1.0.1"
 }
 
