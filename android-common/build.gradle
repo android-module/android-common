@@ -54,5 +54,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
 
-
-apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+if (isRemote()) {
+    apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+}

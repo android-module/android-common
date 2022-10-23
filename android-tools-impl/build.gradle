@@ -54,4 +54,6 @@ ext {
     myLibraryDescription = "android-tools-impl framework"
 }
 
-apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+if (isRemote()) {
+    apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+}

@@ -65,5 +65,6 @@ ext {
     myArtifactId = "android-common-databinding"
     myLibraryDescription = "android-common-databinding"
 }
-
-apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+if (isRemote()) {
+    apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+}

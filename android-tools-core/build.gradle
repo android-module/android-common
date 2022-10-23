@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
+apply from: "../versions.gradle"
 
 android {
     namespace 'com.caldremch.common.tools'
@@ -46,4 +47,6 @@ ext {
     myLibraryDescription = "android-tools-core framework"
 }
 
-apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+if (isRemote()) {
+    apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+}

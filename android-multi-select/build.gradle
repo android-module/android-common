@@ -49,4 +49,6 @@ ext {
     myLibraryDescription = "android-multi-select framework"
 }
 
-apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+if (isRemote()) {
+    apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+}

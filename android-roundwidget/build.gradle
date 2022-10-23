@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
 }
+apply from: "../versions.gradle"
 
 android {
     compileSdk 33
@@ -44,4 +45,6 @@ ext {
     myLibraryDescription = "android-roundwidget"
 }
 
-apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+if (isRemote()) {
+    apply from: "../gradle-maven-kotlin-dsl/mavencentral-with-maven-publish.gradle"
+}
