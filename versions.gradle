@@ -12,11 +12,11 @@ ext {
 
 project.ext {
     remoteDep = false
-    android_common_version = "1.0.1-rc8"
-    android_common_adapter_version = "1.0.0-rc1"
-    android_common_databinding_version = "1.0.0-rc1"
-    android_viewmodel_version = "1.0.1-rc9"
+    android_common_version = "1.0.2"
+    android_common_adapter_version = "1.0.1"
+    android_common_databinding_version = "1.0.1"
+    android_viewmodel_version = "1.0.2"
     android_multi_select_version = "1.0.1"
-    android_logger_version = "1.0.6-rc1"
+    android_logger_version = "1.0.7"
 }
 

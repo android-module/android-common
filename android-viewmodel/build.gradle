@@ -35,10 +35,10 @@ android {
 
 dependencies {
     implementation('io.insert-koin:koin-android:3.2.0')
-    implementation "androidx.activity:activity-ktx:1.5.1"
+    implementation "androidx.activity:activity-ktx:1.6.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
-    implementation "androidx.fragment:fragment-ktx:1.5.2"
-    implementation "io.github.caldremch:android-logger:$android_logger_version"
+    implementation "androidx.fragment:fragment-ktx:1.5.4"
+    implementation "io.github.caldremch:core-logger:$android_logger_version"
     if (isRemote()) {
         implementation "io.github.caldremch:android-common:$android_common_version"
         api "io.github.caldremch:android-common-adapter:$android_common_adapter_version"

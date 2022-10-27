@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 
 open class HttpViewModelPageLoad() : HttpViewModel() {
 
-    protected val _loadDataSuccess = MutableLiveData<Boolean>()
+    private val repository by lazy { }
+
+    private val _loadDataSuccess = MutableLiveData<Boolean>()
     val loadDataSuccess: LiveData<Boolean>
         get() = _loadDataSuccess
 
