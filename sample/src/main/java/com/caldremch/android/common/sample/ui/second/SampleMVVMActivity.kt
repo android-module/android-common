@@ -1,5 +1,6 @@
-package com.caldremch.android.common.sample
+package com.caldremch.android.common.sample.ui.second
 
+import com.caldremch.android.common.sample.R
 import com.caldremch.android.common.sample.databinding.ActivitySampleDatabindingBinding
 import com.caldremch.android.common.sample.mvvm.BaseActivity
 

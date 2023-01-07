@@ -1,7 +1,8 @@
-package com.caldremch.android.common.sample
+package com.caldremch.android.common.sample.ui.second
 
 import android.graphics.Color
 import androidx.lifecycle.ViewModel
+import com.caldremch.android.common.sample.R
 import com.caldremch.android.common.sample.databinding.FragmentSampleMvvmBinding
 import com.caldremch.android.common.sample.mvvm.BaseFragment
 

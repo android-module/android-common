@@ -1,17 +1,20 @@
-package com.caldremch.android.common.sample
+package com.caldremch.android.common.sample.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.caldremch.android.common.databinding.adapter.IBindingClick
 
 /**
- * Created by Leon on 2022/8/19.
+ * @author Leon
+ * @date 2023/1/7
+ * @desc
  */
-class SampleDataBindingViewModel : ViewModel(){
+class Main2ViewModel : ViewModel() {
     val start = MutableLiveData<Any?>()
+    val singleLiveEvent = SingleLiveEvent<Any?>()
     val click = object : IBindingClick {
         override fun click() {
-            start.postValue(null)
+            singleLiveEvent.value = null
         }
     }
 }

@@ -7,22 +7,27 @@
 
         <variable
             name="viewModel"
-            type="com.caldremch.android.common.sample.Main2ViewModel" />
+            type="com.caldremch.android.common.sample.ui.main.Main2ViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@color/white"
         android:layout_height="match_parent"
         tools:context=".MainActivity2">
 
 
         <Button
             android:layout_width="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:bindClick="@{viewModel.click}"
+            android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:layout_height="wrap_content" />
+            android:layout_marginTop="20dp"
+            android:text="点击跳转"
+            app:bindClick="@{viewModel.click}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
